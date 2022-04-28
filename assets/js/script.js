@@ -1,18 +1,49 @@
 var cocktailContainerEl = document.querySelector("#cocktail-container");
-
+var cocktailSearchContainerEl = document.querySelector("#cocktail-search");
+var cocktailInputEl = document.querySelector("cocktail-options");
 // Search form
 // Part 1 Cocktail to search by (1) ingredient or (2) name of cocktail **drop down box
 // Part 2 Language User to choose language ** drop down box
 
+// Create an array to store user's searched cocktails in localStorage
+var cocktails = [];
+
+// Create searchCityHandler() for user to enter a city into search form
+var searchCocktailHandler = function(event) {
+    // Prevent page from refreshing
+    event.preventDefault();
+
+    // Get cocktail name value from input element
+    let cocktailname = event.target.value;
+      
+    // Feed user's entered cocktail name into functions that will make Coctail DB & Google Translate calls 
+    // and generate buttons
+    if (cocktailname) {
+      getCocktailData(cocktailname);
+      buttonGenerator(cocktailname);
+      // Push cocktail name into cocktails array and store in localStorage
+      cocktails.push(cocktailname);
+      localStorage.setItem("cocktails", JSON.stringify(cocktails));
+      // Clear input form element 
+
+    
+     // Alert user to select a cocktail if the input element is blank 
+    } else {
+      alert('Please choose a cocktail');
+    }
+  };
+
+
+
+
 // Fetch data 
+// Name of the cocktail
+// Picture of the cocktail
 // Instructions of how to make cocktail
-// picture of the cocktail
-// ingredients list
 
 
 var getCocktailData = function(name) {
-
-  
+  cocktailContainerEl.innerHTML = "";           
   // Format the Cocktail DB API URL to accept a cocktail name
   var apiUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + name;
 
@@ -81,6 +112,4 @@ var getCocktailData = function(name) {
 // Dynamically generate buttons with cocktail names that will persist upon closing browser or refreshing browser
 
 
-
-// getCocktailData("strawberry_margarita");
-getCocktailData("paloma");
+cocktailSearchContainerEl.addEventListener("click", searchCocktailHandler)
