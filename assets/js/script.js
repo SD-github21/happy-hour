@@ -8,11 +8,11 @@
 // ingredients list
 
 
-var getCocktailData = function() {
+var getCocktailData = function(name) {
 
   
   // Format the Cocktail DB API URL to accept a cocktail name
-  var apiUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita";
+  var apiUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + name;
 
   // Fetch cocktail data from the API URL
   fetch(apiUrl)
@@ -24,16 +24,17 @@ var getCocktailData = function() {
           console.log(data);
 
           var cocktails = data.drinks;
-          console.log(cocktails);
-          console.log(cocktails[0]);
-          console.log(cocktails[0].strDrink);
           
           for (i = 0; i < cocktails.length; i++) {
 
             var cocktail = cocktails[i].strDrink;
+            var image = cocktails[i].strDrinkThumb;
             var instructions = cocktails[i].strInstructions;
             console.log(cocktail);
+            console.log(image);
             console.log(instructions);
+            
+
 
           } ;
           // Create elements for cocktail name, instructions, ingredients, and picture to display on webpage
@@ -68,4 +69,4 @@ var getCocktailData = function() {
 
 
 
-getCocktailData();
+getCocktailData("margarita");
