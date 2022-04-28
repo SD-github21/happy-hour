@@ -20,9 +20,10 @@ var searchCocktailHandler = function(event) {
     // and generate buttons
     if (cocktailname) {
       getCocktailData(cocktailname);
-      buttonGenerator(cocktailname);
+      // buttonGenerator(cocktailname);
       // Push cocktail name into cocktails array and store in localStorage
       cocktails.push(cocktailname);
+      console.log(cocktails);
       localStorage.setItem("cocktails", JSON.stringify(cocktails));
       // Clear input form element 
 
