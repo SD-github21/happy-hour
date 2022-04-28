@@ -1,3 +1,5 @@
+var cocktailContainerEl = document.querySelector("#cocktail-container");
+
 // Search form
 // Part 1 Cocktail to search by (1) ingredient or (2) name of cocktail **drop down box
 // Part 2 Language User to choose language ** drop down box
@@ -33,15 +35,26 @@ var getCocktailData = function(name) {
             console.log(cocktail);
             console.log(image);
             console.log(instructions);
+
+            // Create elements for cocktail name, instructions, ingredients, and picture to display on webpage
+          var cocktailHeaderEl = document.createElement("h3");
+          cocktailHeaderEl.setAttribute("id", "cocktail-name");
+          cocktailHeaderEl.textContent = cocktail;
+          
+          var cocktailImageEl = document.createElement("img");
+          cocktailImageEl.setAttribute("src", image);
+          
+          var coctailInstructionsEl = document.createElement("p");
+          coctailInstructionsEl.textContent = instructions;
+
+
+          cocktailContainerEl.appendChild(cocktailHeaderEl);
+          cocktailContainerEl.appendChild(cocktailImageEl);
+          cocktailContainerEl.appendChild(coctailInstructionsEl);
             
 
 
           } ;
-          // Create elements for cocktail name, instructions, ingredients, and picture to display on webpage
-          // var cocktailHeaderEl = document.createElement("h3");
-          // cocktailHeaderEl.setAttribute("id", "cocktail-name");
-          // cocktailHeaderEl.textContent = ;
-          // cocktailContainerEl.appendChild(cocktailHeaderEl);
 
 
         });
@@ -69,4 +82,5 @@ var getCocktailData = function(name) {
 
 
 
-getCocktailData("margarita");
+// getCocktailData("strawberry_margarita");
+getCocktailData("paloma");
