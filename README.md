@@ -11,3 +11,5 @@ Application uses client-side storage to store persistent data.
 Application doesn't use JS alerts, prompts, or confirms (uses modals instead).
 Application uses a CSS framework other than Bootstrap.
 Application is interactive (accepts and responds to user input)
+
+# Team
