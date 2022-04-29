@@ -58,12 +58,10 @@ var getCocktailData = function(name) {
           console.log(data);
 
           var cocktails = data.drinks;
-          
-          for (i = 0; i < cocktails.length; i++) {
 
-            var cocktail = cocktails[i].strDrink;
-            var image = cocktails[i].strDrinkThumb;
-            var instructions = cocktails[i].strInstructions;
+            var cocktail = cocktails[0].strDrink;
+            var image = cocktails[0].strDrinkThumb;
+            var instructions = cocktails[0].strInstructions;
             console.log(cocktail);
             console.log(image);
             console.log(instructions);
@@ -87,7 +85,6 @@ var getCocktailData = function(name) {
             
 
 
-          } ;
 
 
         });
