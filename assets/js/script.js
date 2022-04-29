@@ -71,6 +71,7 @@ var getCocktailData = function(name) {
             // Create elements for cocktail name, instructions, ingredients, and picture to display on webpage
           var cocktailHeaderEl = document.createElement("h3");
           cocktailHeaderEl.setAttribute("id", "cocktail-name");
+          cocktailHeaderEl.classList.add("border", "border-dark", )
           cocktailHeaderEl.textContent = cocktail;
           
           var cocktailImageEl = document.createElement("img");
