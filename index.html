@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
+
     <title>Happy Hour</title>
     
     <body>
@@ -51,12 +53,28 @@
         <!-- Footer -->
         <footer>
             <div>
-
+                <p><button class="button" data-open="exampleModal1">Click me for a modal</button></p>
+                <div class="reveal" id="exampleModal1" data-reveal>
+                    <h1>Awesome. I Have It.</h1>
+                    <p class="lead">Your couch. It is mine.</p>
+                    <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+                    <button class="close-button" data-close aria-label="Close modal" type="button">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>            
             </div>
         </footer>
         <!-- End Footer -->
         
         <!-- Link Javascript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>     
+        <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+        <script src="assets/js/vendor/foundation.min.js"></script>
+        <script src="assets/js/vendor/jquery.js"></script>
+        <script src="assets/js/vendor/foundation.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation-essential/5.5.0/js/foundation/foundation.reveal.js"></script>        
+        <script>$(document).foundation();</script>
         <script src="assets/js/script.js"></script>
         <!-- End Link Javascript -->
     </body>
