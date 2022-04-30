@@ -20,6 +20,7 @@ var searchCocktailHandler = function(event) {
     // and generate buttons
     if (cocktailname) {
       getCocktailData(cocktailname);
+      getTranslateData(cocktailname);
       // buttonGenerator(cocktailname);
       // Push cocktail name into cocktails array and store in localStorage
       cocktails.push(cocktailname);
@@ -166,6 +167,35 @@ var getCocktailData = function(name) {
 
 // Feed cocktail data into the Google Translate API 
 // Fetch data
+var getTranslateData = function(data) {
+  const encodedParams = new URLSearchParams();
+  encodedParams.append("q", "I would like to order ");
+  encodedParams.append("target", "es");
+  encodedParams.append("source", "en");
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+      'Accept-Encoding': 'application/gzip',
+      'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',
+      'X-RapidAPI-Key': '9cdcfb7a52msh6e17173be06bf3bp13a445jsn00101d435df2'
+    },
+    body: encodedParams
+  };
+
+  fetch('https://google-translate1.p.rapidapi.com/language/translate/v2', options)
+    .then(function(response) {
+      console.log(response);
+    if (response.ok) {
+      response.json().then(function(data) {
+      console.log(data);
+      console.log(response[0] + " " + data)}
+    .catch(function(error) {
+      alert('Unable to connect to Google Translate API');
+}));
+}});
+};
 
 // Dynamically generate HTML to display translation of how to order drink in region's native language
 
@@ -175,3 +205,4 @@ var getCocktailData = function(name) {
 
 
 cocktailSearchContainerEl.addEventListener("click", searchCocktailHandler)
+getTranslateData();
