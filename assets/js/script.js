@@ -167,19 +167,20 @@ var getCocktailData = function(name) {
 
 // Feed cocktail data into the Google Translate API 
 // Fetch data
-var getTranslateData = function(data) {
-  const encodedParams = new URLSearchParams();
+var getTranslateData = function() {
+  var encodedParams = new URLSearchParams();
   encodedParams.append("q", "I would like to order ");
   encodedParams.append("target", "es");
   encodedParams.append("source", "en");
+  
 
-  const options = {
+  var options = {
     method: 'POST',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
       'Accept-Encoding': 'application/gzip',
       'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',
-      'X-RapidAPI-Key': '9cdcfb7a52msh6e17173be06bf3bp13a445jsn00101d435df2'
+      'X-RapidAPI-Key': '5c8db769e9msh5db48a3075f2811p17399bjsn3bbad4940064'
     },
     body: encodedParams
   };
@@ -187,17 +188,35 @@ var getTranslateData = function(data) {
   fetch('https://google-translate1.p.rapidapi.com/language/translate/v2', options)
     .then(function(response) {
       console.log(response);
-    if (response.ok) {
-      response.json().then(function(data) {
-      console.log(data);
-      console.log(response[0] + " " + data)}
-    .catch(function(error) {
-      alert('Unable to connect to Google Translate API');
-}));
-}});
+      if (response.ok) {
+        response.json().then(function(data) {
+          console.log(data);
+
+          var translation = data.data;
+          console.log(translation);
+          var finaltranslate = translation.translations[0].translatedText;
+          console.log(finaltranslate);
+          // return(finaltranslate);
+
+          
+          });
+      // Create alerts for any errors that might come up regarding the API call
+    } else {
+      alert('Error: ' + response.statusText);
+      // Clear out data from any previous searches
+
+    }
+  })
+  .catch(function(error) {
+    alert('Unable to connect to Google Translate API');
+  });
 };
 
 // Dynamically generate HTML to display translation of how to order drink in region's native language
+// var translateOrderModal = function(name, finaltranslate) {
+
+// }
+
 
 // Create a favorites list for the cocktails (localStorage)
 // Store cocktails into an array on localStorage
