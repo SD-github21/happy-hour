@@ -62,6 +62,23 @@ var getCocktailData = function(name) {
             var cocktail = cocktails[0].strDrink;
             var image = cocktails[0].strDrinkThumb;
             var instructions = cocktails[0].strInstructions;
+            var ingredient1 = cocktails[0].strIngredient1;
+            var ingredient2 = cocktails[0].strIngredient2;
+            var ingredient3 = cocktails[0].strIngredient3;
+            var ingredient4 = cocktails[0].strIngredient4;
+            var ingredient5 = cocktails[0].strIngredient5;
+            var ingredient6 = cocktails[0].strIngredient6;
+
+            var measure1 = cocktails[0].strMeasure1;
+            var measure2 = cocktails[0].strMeasure2;
+            var measure3 = cocktails[0].strMeasure3;
+            var measure4 = cocktails[0].strMeasure4;
+            var measure5 = cocktails[0].strMeasure5;
+            var measure6 = cocktails[0].strMeasure6;
+
+
+
+
             console.log(cocktail);
             console.log(image);
             console.log(instructions);
@@ -75,14 +92,60 @@ var getCocktailData = function(name) {
           var cocktailImageEl = document.createElement("img");
           cocktailImageEl.setAttribute("src", image);
           
+          var cocktailInstructionsHeadEl = document.createElement("h3");
+          cocktailInstructionsHeadEl.textContent = "Instructions"
           var coctailInstructionsEl = document.createElement("p");
           coctailInstructionsEl.textContent = instructions;
+
+          var cocktailRecipeEl = document.createElement("h3");
+          cocktailRecipeEl.textContent = "Recipe"
+          var cocktailIngredEl1 = document.createElement("p");
+          cocktailIngredEl1.textContent = measure1 + " " + ingredient1;
+          var cocktailIngredEl2 = document.createElement("p");
+          cocktailIngredEl2.textContent = measure2 + " " + ingredient2;
+          var cocktailIngredEl3 = document.createElement("p");
+          cocktailIngredEl3.textContent = measure3 + " " + ingredient3;
+          var cocktailIngredEl4 = document.createElement("p");
+          cocktailIngredEl4.textContent = measure4 + " " + ingredient4;
+          var cocktailIngredEl5 = document.createElement("p");
+          cocktailIngredEl5.textContent = measure5 + " " + ingredient5;
+          var cocktailIngredEl6 = document.createElement("p");
+          cocktailIngredEl6.textContent = measure6 + " " + ingredient6;
+
+          // Create conditionals if ingredients and measurements are null
+          if (measure3 == null || ingredient3 == null) {
+            cocktailIngredEl3.textContent = "";
+            cocktailIngredEl4.textContent = "";
+            cocktailIngredEl5.textContent = "";
+            cocktailIngredEl6.textContent = "";
+
+          } else if (measure4== null || ingredient4== null) {
+            cocktailIngredEl4.textContent = "";
+            cocktailIngredEl5.textContent = "";
+            cocktailIngredEl6.textContent = "";
+
+          } else if (measure5==null || ingredient5==null) {
+            cocktailIngredEl5.textContent = "";
+            cocktailIngredEl6.textContent = "";
+
+          } else if (measure6==null || ingredient6==null) {
+
+            cocktailIngredEl6.textContent = "";
+          };
+          
 
 
           cocktailContainerEl.appendChild(cocktailHeaderEl);
           cocktailContainerEl.appendChild(cocktailImageEl);
+          cocktailContainerEl.appendChild(cocktailRecipeEl);
+          cocktailContainerEl.appendChild(cocktailIngredEl1);
+          cocktailContainerEl.appendChild(cocktailIngredEl2);
+          cocktailContainerEl.appendChild(cocktailIngredEl3);
+          cocktailContainerEl.appendChild(cocktailIngredEl4);
+          cocktailContainerEl.appendChild(cocktailIngredEl5);
+          cocktailContainerEl.appendChild(cocktailIngredEl6);
+          cocktailContainerEl.appendChild(cocktailInstructionsHeadEl);          
           cocktailContainerEl.appendChild(coctailInstructionsEl);
-            
 
 
 
