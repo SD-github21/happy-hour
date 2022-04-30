@@ -1,6 +1,8 @@
 var cocktailContainerEl = document.querySelector("#cocktail-container");
+var cocktailFormEl = document.querySelectorAll("#cocktail-form");
 var cocktailSearchContainerEl = document.querySelector("#cocktail-search");
-var cocktailInputEl = document.querySelector("cocktail-options");
+var cocktailSelectBtnEl = document.querySelector("#select-btn");
+var cocktailInputEl = document.querySelector("#cocktail-options");
 // Search form
 // Part 1 Cocktail to search by (1) ingredient or (2) name of cocktail **drop down box
 // Part 2 Language User to choose language ** drop down box
@@ -10,17 +12,21 @@ var cocktails = [];
 
 // Create searchCityHandler() for user to enter a city into search form
 var searchCocktailHandler = function(event) {
+
     // Prevent page from refreshing
     event.preventDefault();
 
     // Get cocktail name value from input element
-    let cocktailname = event.target.value;
+
+    var cocktailname = $("#cocktail-options").val();
+    console.log(cocktailname);
+
       
     // Feed user's entered cocktail name into functions that will make Coctail DB & Google Translate calls 
     // and generate buttons
     if (cocktailname) {
       getCocktailData(cocktailname);
-      getTranslateData(cocktailname);
+      // getTranslateData(cocktailname);
       // buttonGenerator(cocktailname);
       // Push cocktail name into cocktails array and store in localStorage
       cocktails.push(cocktailname);
@@ -167,50 +173,50 @@ var getCocktailData = function(name) {
 
 // Feed cocktail data into the Google Translate API 
 // Fetch data
-var getTranslateData = function() {
-  var encodedParams = new URLSearchParams();
-  encodedParams.append("q", "I would like to order ");
-  encodedParams.append("target", "es");
-  encodedParams.append("source", "en");
+// var getTranslateData = function() {
+//   var encodedParams = new URLSearchParams();
+//   encodedParams.append("q", "I would like to order ");
+//   encodedParams.append("target", "es");
+//   encodedParams.append("source", "en");
   
 
-  var options = {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-      'Accept-Encoding': 'application/gzip',
-      'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',
-      'X-RapidAPI-Key': '5c8db769e9msh5db48a3075f2811p17399bjsn3bbad4940064'
-    },
-    body: encodedParams
-  };
+//   var options = {
+//     method: 'POST',
+//     headers: {
+//       'content-type': 'application/x-www-form-urlencoded',
+//       'Accept-Encoding': 'application/gzip',
+//       'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',
+//       'X-RapidAPI-Key': '5c8db769e9msh5db48a3075f2811p17399bjsn3bbad4940064'
+//     },
+//     body: encodedParams
+//   };
 
-  fetch('https://google-translate1.p.rapidapi.com/language/translate/v2', options)
-    .then(function(response) {
-      console.log(response);
-      if (response.ok) {
-        response.json().then(function(data) {
-          console.log(data);
+//   fetch('https://google-translate1.p.rapidapi.com/language/translate/v2', options)
+//     .then(function(response) {
+//       console.log(response);
+//       if (response.ok) {
+//         response.json().then(function(data) {
+//           console.log(data);
 
-          var translation = data.data;
-          console.log(translation);
-          var finaltranslate = translation.translations[0].translatedText;
-          console.log(finaltranslate);
-          // return(finaltranslate);
+//           var translation = data.data;
+//           console.log(translation);
+//           var finaltranslate = translation.translations[0].translatedText;
+//           console.log(finaltranslate);
+//           // return(finaltranslate);
 
           
-          });
-      // Create alerts for any errors that might come up regarding the API call
-    } else {
-      alert('Error: ' + response.statusText);
-      // Clear out data from any previous searches
+//           });
+//       // Create alerts for any errors that might come up regarding the API call
+//     } else {
+//       alert('Error: ' + response.statusText);
+//       // Clear out data from any previous searches
 
-    }
-  })
-  .catch(function(error) {
-    alert('Unable to connect to Google Translate API');
-  });
-};
+//     }
+//   })
+//   .catch(function(error) {
+//     alert('Unable to connect to Google Translate API');
+//   });
+// };
 
 // Dynamically generate HTML to display translation of how to order drink in region's native language
 // var translateOrderModal = function(name, finaltranslate) {
@@ -223,5 +229,6 @@ var getTranslateData = function() {
 // Dynamically generate buttons with cocktail names that will persist upon closing browser or refreshing browser
 
 
-cocktailSearchContainerEl.addEventListener("click", searchCocktailHandler)
-getTranslateData();
+
+cocktailSelectBtnEl.addEventListener("click", searchCocktailHandler);
+// getTranslateData();
