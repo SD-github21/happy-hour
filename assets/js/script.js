@@ -30,12 +30,12 @@ var searchCocktailHandler = function(event) {
     // and generate buttons
       getCocktailData(cocktailvalue);
       if (cocktailname === "Black Russian" || cocktailname === "Negroni" || cocktailname === "Mimosa" ||
-      cocktailname === "Sangria" || cocktailname === "Pina Colada" || cocktailname === "Margarita") {
+      cocktailname === "Sangria" || cocktailname === "Pina Colada" || cocktailname === "Margarita" || cocktailname === "Paloma") {
       getTranslateData(cocktailname);
       } else {
         translateModalEl.textContent = "";
         var translationOrderEl = document.createElement("p");
-        translationOrderEl.textContent = "I would like to order a " + cocktailname;
+        translationOrderEl.textContent = "I would like to order a(n) " + cocktailname;
         translateModalEl.appendChild(translationOrderEl);
 
       };
@@ -57,10 +57,7 @@ var searchCocktailHandler = function(event) {
     cocktailButtonEl.innerHTML = cocktailname;
 
     cocktailButtonsEl.appendChild(cocktailButtonEl);
-
-
   };
-
 
 
   // Create buttonClickHandler() to allow user to click on cocktail buttons and obtain cocktail weather data  
@@ -70,17 +67,16 @@ var searchCocktailHandler = function(event) {
       
     if (cocktail) {
       getCocktailData(cocktail); 
-      if (cocktailname === "Black Russian" || cocktailname === "Negroni" || cocktailname === "Mimosa" ||
-      cocktailname === "Sangria" || cocktailname === "Pina Colada" || cocktailname === "Margarita") {
+      if (cocktail === "Black Russian" || cocktail=== "Negroni" || cocktail === "Mimosa" ||
+      cocktail === "Sangria" || cocktail === "Pina Colada" || cocktail === "Margarita" || cocktail === "Paloma") {
       getTranslateData(cocktail);
       } else {
         translateModalEl.textContent = "";
         var translationOrderEl = document.createElement("p");
-        translationOrderEl.textContent = "I would like to order a " + cocktailname;
+        translationOrderEl.textContent = "I would like to order a(n) " + cocktail;
         translateModalEl.appendChild(translationOrderEl);
 
       };
-
       
     }
   };
@@ -222,20 +218,20 @@ var getTranslateData = function(cocktailname) {
   
   var encodedParams = new URLSearchParams();
 
-  if (cocktailname === "Sangria" || cocktailname === "Pina Colada" || cocktailname=== "Margarita") {
-    encodedParams.append("q", "I would like to order a");
+  if (cocktailname === "Sangria" || cocktailname === "Pina Colada" || cocktailname=== "Margarita" || cocktail === "Paloma") {
+    encodedParams.append("q", "I would like to order a(n)");
     encodedParams.append("target", "es");
     encodedParams.append("source", "en");
 } else if (cocktailname === "Mimosa" || cocktailname === "French 75") {
-    encodedParams.append("q", "I would like to order a ");
+    encodedParams.append("q", "I would like to order a(n) ");
     encodedParams.append("target", "fr");
     encodedParams.append("source", "en");
 } else if (cocktailname === "Negroni") {
-    encodedParams.append("q", "I would like to order a");
+    encodedParams.append("q", "I would like to order a(n)");
     encodedParams.append("target", "it");
     encodedParams.append("source", "en");
 } else {
-  encodedParams.append("q", "I would like to order a");
+  encodedParams.append("q", "I would like to order a(n)");
   encodedParams.append("target", "de");
   encodedParams.append("source", "en");
 }; 
