@@ -4,6 +4,7 @@ var cocktailSearchContainerEl = document.querySelector("#cocktail-search");
 var cocktailSelectBtnEl = document.querySelector("#select-btn");
 var cocktailInputEl = document.querySelector("#cocktail-options");
 var translateModalEl = document.querySelector(".lead");
+var cocktailButtonsEl = document.querySelector("#cocktail-buttons");
 
 // Search form
 // Part 1 Cocktail to search by (1) ingredient or (2) name of cocktail **drop down box
@@ -38,12 +39,53 @@ var searchCocktailHandler = function(event) {
         translateModalEl.appendChild(translationOrderEl);
 
       };
-      // buttonGenerator(cocktailname);
+      buttonGenerator(cocktailname);
       // Push cocktail name into cocktails array and store in localStorage
       cocktails.push(cocktailname);
       console.log(cocktails);
       localStorage.setItem("cocktails", JSON.stringify(cocktails));
   };
+
+  // Create and feed cocktail name into buttonGenerator() to dynamically generate and display buttons 
+  // for each searched cocktail  
+  var buttonGenerator = function(cocktailname) {
+    // Clear data from any previous searches
+
+    var cocktailButtonEl = document.createElement("button");
+    cocktailButtonEl.setAttribute("data-cocktail", cocktailname);
+    cocktailButtonEl.classList = "button"
+    cocktailButtonEl.innerHTML = cocktailname;
+
+    cocktailButtonsEl.appendChild(cocktailButtonEl);
+
+
+  };
+
+
+
+  // Create buttonClickHandler() to allow user to click on cocktail buttons and obtain cocktail weather data  
+  var buttonClickHandler = function(event){
+    
+    var cocktail = event.target.getAttribute("data-cocktail");
+      
+    if (cocktail) {
+      getCocktailData(cocktail); 
+      if (cocktailname === "Black Russian" || cocktailname === "Negroni" || cocktailname === "Mimosa" ||
+      cocktailname === "Sangria" || cocktailname === "Pina Colada" || cocktailname === "Margarita") {
+      getTranslateData(cocktail);
+      } else {
+        translateModalEl.textContent = "";
+        var translationOrderEl = document.createElement("p");
+        translationOrderEl.textContent = "I would like to order a " + cocktailname;
+        translateModalEl.appendChild(translationOrderEl);
+
+      };
+
+      
+    }
+  };
+  
+
 
 
 // Fetch data 
@@ -242,24 +284,44 @@ var getTranslateData = function(cocktailname) {
   })
   .catch(function(error) {
     alert('Unable to connect to Google Translate API');
-  });
+  }); 
+};
 
+// Store cocktails into an array on localStorage
+// Dynamically generate buttons with cocktail names that will persist upon closing browser or refreshing browser
+// Create loadButtons() for saved cities search to persist on webpage upon refresh or reopening browser
+  var loadButtons = function() {
 
+    // Clear content from all elements 
 
+    // Obtain cocktails array from localStorage
+    var savedCocktails = localStorage.getItem("cocktails");
+    
+    // If there are no cocktails, set cocktails to an empty array and return out of the function
+    if (savedCocktails == "cocktails" || savedCocktails == null) {
+      return;
+    // else, load savedCocktails and set them to the cocktails array
+    } else {
+    savedCocktails = JSON.parse(savedCocktails);
+    cocktails = savedCocktails;
+    
+    // Create a for loop to loop through each city and generate a button for each cocktail that will display on page
+    for (i = 0; i < savedCocktails.length; i++) {
+
+      var cocktailButtonEl = document.createElement("button");
+      cocktailButtonEl.setAttribute("data-cocktail", savedCocktails[i]);
+      cocktailButtonEl.classList = "button"
+      cocktailButtonEl.innerHTML = savedCocktails[i];
+    
+      cocktailButtonsEl.appendChild(cocktailButtonEl);
   
-  
+      }
+  }
  
 };
 
 
 
-
-
-// Create a favorites list for the cocktails (localStorage)
-// Store cocktails into an array on localStorage
-// Dynamically generate buttons with cocktail names that will persist upon closing browser or refreshing browser
-
-
-
+loadButtons();
+cocktailButtonsEl.addEventListener('click', buttonClickHandler);
 cocktailSelectBtnEl.addEventListener("click", searchCocktailHandler);
-// getTranslateData();
