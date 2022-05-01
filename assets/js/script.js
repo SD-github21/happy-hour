@@ -3,18 +3,16 @@ var cocktailFormEl = document.querySelectorAll("#cocktail-form");
 var cocktailSearchContainerEl = document.querySelector("#cocktail-search");
 var cocktailSelectBtnEl = document.querySelector("#select-btn");
 var cocktailInputEl = document.querySelector("#cocktail-options");
-var translateModalEl = document.querySelector(".lead");
+var translateModalEl = document.querySelector("#translation");
 var cocktailButtonsEl = document.querySelector("#cocktail-buttons");
 var cocktailErrorsEl = document.querySelector("#cocktail-errors");
+var translateErrorsEl = document.querySelector("#translate-errors");
 
-// Search form
-// Part 1 Cocktail to search by (1) ingredient or (2) name of cocktail **drop down box
-// Part 2 Language User to choose language ** drop down box
 
 // Create an array to store user's searched cocktails in localStorage
 var cocktails = [];
 
-// Create searchCityHandler() for user to enter a city into search form
+// Create searchCocktailHandler() for user to enter a cocktail into search form
 var searchCocktailHandler = function(event) {
 
     // Prevent page from refreshing
@@ -52,10 +50,9 @@ var searchCocktailHandler = function(event) {
 
   };
 
-  // Create and feed cocktail name into buttonGenerator() to dynamically generate and display buttons 
+  // Feed cocktail name into buttonGenerator() to dynamically generate and display buttons 
   // for each searched cocktail  
   var buttonGenerator = function(cocktailname) {
-    // Clear data from any previous searches
     if (!cocktails.includes(cocktailname)) {
       console.log(cocktails);
       var cocktailButtonEl = document.createElement("button");
@@ -65,9 +62,7 @@ var searchCocktailHandler = function(event) {
   
       cocktailButtonsEl.appendChild(cocktailButtonEl);
 
-    }
-
-
+    };
 
   };
 
@@ -79,8 +74,9 @@ var searchCocktailHandler = function(event) {
       
     if (cocktail) {
       getCocktailData(cocktail); 
-      if (cocktail === "Black Russian" || cocktail=== "Negroni" || cocktail === "Mimosa" ||
-      cocktail === "Sangria" || cocktail === "Pina Colada" || cocktail === "Margarita" || cocktail === "Paloma") {
+      if (cocktail === "Black Russian" || cocktail === "Negroni" || cocktail === "Mimosa" ||
+      cocktail === "Sangria" || cocktail === "Pina Colada" || cocktail === "Margarita" || cocktail === "Paloma"
+      || cocktail === "French 75") {
       getTranslateData(cocktail);
       } else {
         translateModalEl.textContent = "";
@@ -88,9 +84,8 @@ var searchCocktailHandler = function(event) {
         translationOrderEl.textContent = "I would like to order a(n) " + cocktail;
         translateModalEl.appendChild(translationOrderEl);
 
-      };
-      
-    }
+      };      
+    };
   };
   
 
@@ -99,8 +94,8 @@ var searchCocktailHandler = function(event) {
 // Fetch data 
 // Name of the cocktail
 // Picture of the cocktail
+// Ingredients and measurements 
 // Instructions of how to make cocktail
-
 
 var getCocktailData = function(name) {
   cocktailContainerEl.innerHTML = "";           
@@ -145,7 +140,6 @@ var getCocktailData = function(name) {
             // Create elements for cocktail name, instructions, ingredients, and picture to display on webpage
           var cocktailHeaderEl = document.createElement("h3");
           cocktailHeaderEl.setAttribute("id", "cocktail-name");
-          cocktailHeaderEl.classList.add("border", "border-dark", )
           cocktailHeaderEl.textContent = cocktail;
           
           var cocktailImageEl = document.createElement("img");
@@ -206,17 +200,19 @@ var getCocktailData = function(name) {
           cocktailContainerEl.appendChild(cocktailInstructionsHeadEl);          
           cocktailContainerEl.appendChild(coctailInstructionsEl);
 
+          // Update the Cocktail DB Error Message modal that there were no errors in calling the Cocktail DB API
+          cocktailErrorsEl.textContent = "";
           cocktailErrorsEl.textContent = "There were no errors with calling the Cocktail DB API";
-          
-
+  
 
         });
 
-      // Create alerts for any errors that might come up regarding the API call
+      // Create modal error messages for any errors that might come up regarding the API call
       } else {
 
         cocktailErrorsEl.textContent = "";
         cocktailErrorsEl.textContent = "Error: " + response.status + " " + response.statusText;
+        console.log("Error: " + response.status + " " + response.statusText);
 
 
 
@@ -226,13 +222,13 @@ var getCocktailData = function(name) {
     .catch(function(error) {
       cocktailErrorsEl.textContent = "";
       cocktailErrorsEl.textContent = "Unable to connect to Cocktail DB API";
-    
+      console.log("Unable to connect to Cocktail DB API");
 
     });
 };
 
-// Feed cocktail data into the Google Translate API 
-// Fetch data
+// Feed cocktail name into the Google Translate API 
+// Fetch translation data
 
 var getTranslateData = function(cocktailname) {
   
@@ -278,8 +274,8 @@ var getTranslateData = function(cocktailname) {
           console.log(translation);
           var finaltranslate = translation.translations[0].translatedText;
           console.log(finaltranslate);
-          // Dynamically generate HTML to display translation of how to order drink in region's native language
 
+          // Dynamically generate HTML to display translation of how to order drink in region's native language
           var translate = finaltranslate;
           console.log(translate);
           translateModalEl.textContent = "";
@@ -287,28 +283,38 @@ var getTranslateData = function(cocktailname) {
           translationOrderEl.textContent = translate + " " + cocktailname;
           translateModalEl.appendChild(translationOrderEl);
 
+          // Update the Google Translate Error Message modal that there were no errors in calling 
+          // the Google Translate API
+          translateErrorsEl.textContent = "";
+          translateErrorsEl.textContent = "There were no errors with calling the Google Translate API";
+
+
           
           });
 
       
-      // Create alerts for any errors that might come up regarding the API call
+      // Create modal error messages for any errors that might come up regarding the API call
     } else {
-      alert('Error: ' + response.statusText);
-      // Clear out data from any previous searches
+      translateErrorsEl.textContent = "";
+      translateErrorsEl.textContent = "Error: " + response.status + " " + response.statusText;
+      console.log('Error: ' + response.statusText);
 
     }
   })
   .catch(function(error) {
-    alert('Unable to connect to Google Translate API');
+
+    translateErrorsEl.textContent = "";
+    translateErrorsEl.textContent = "Unable to connect to Google Translate API";
+    console.log('Unable to connect to Google Translate API');
   }); 
 };
 
-// Store cocktails into an array on localStorage
-// Dynamically generate buttons with cocktail names that will persist upon closing browser or refreshing browser
-// Create loadButtons() for saved cities search to persist on webpage upon refresh or reopening browser
-  var loadButtons = function() {
 
-    // Clear content from all elements 
+
+// Create loadButtons() for saved cocktails search to persist on webpage upon refresh or reopening browser
+// Dynamically generate buttons with cocktail names that will persist upon closing browser or refreshing browser
+var loadButtons = function() {
+
 
     // Obtain cocktails array from localStorage
     var savedCocktails = localStorage.getItem("cocktails");
@@ -321,7 +327,7 @@ var getTranslateData = function(cocktailname) {
     savedCocktails = JSON.parse(savedCocktails);
     cocktails = savedCocktails;
     
-    // Create a for loop to loop through each city and generate a button for each cocktail that will display on page
+    // Create a for loop to loop through each cocktail and generate a button for each cocktail that will display on page
     for (i = 0; i < savedCocktails.length; i++) {
 
       var cocktailButtonEl = document.createElement("button");
@@ -330,9 +336,8 @@ var getTranslateData = function(cocktailname) {
       cocktailButtonEl.innerHTML = savedCocktails[i];
     
       cocktailButtonsEl.appendChild(cocktailButtonEl);
-  
-      }
-  }
+    };
+  };
  
 };
 
