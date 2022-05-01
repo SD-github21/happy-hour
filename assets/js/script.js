@@ -258,7 +258,7 @@ var getTranslateData = function(cocktailname) {
       'content-type': 'application/x-www-form-urlencoded',
       'Accept-Encoding': 'application/gzip',
       'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',
-      'X-RapidAPI-Key': '5c8db769e9msh5db48a3075f2811p17399bjsn3bbad4940064'
+      'X-RapidAPI-Key': '7b38121e00mshda1e1a9765dd087p16fbcdjsnbaaa054a51e5'
     },
     body: encodedParams
   };
