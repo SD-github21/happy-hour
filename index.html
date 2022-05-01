@@ -24,10 +24,10 @@
             <div id="cocktail-search">
 
                 <form id="cocktail-form">
-                    <label for="cocktail-options"></label>
+                    <label for="cocktail-options">Select a Cocktail from the Menu</label>
 
-                    <select name="cocktail-options" id="cocktail-options">
-                        <option value="bloody_mary">Choose a cocktail</option>
+                    <select name="cocktail-options" id="cocktail-options" required>
+                        <option>Choose a cocktail</option>
                         <option value="bloody_mary">Bloody Mary</option>
                         <option value="cosmopolitan">Cosmopolitan</option>
                         <option value="french_75">French 75</option>
@@ -45,7 +45,7 @@
                     </select>
                     <br>
                     <br>
-                    <button id="select-btn" type="submit">Click Here to Get Your Cocktail!</button>
+                    <button id="select-btn" class="button" type="submit">Click Here to Enter Your Selected Cocktail!</button>
                     <br>
                     <br>
                 </form>
@@ -61,16 +61,17 @@
         <!-- Footer -->
         <footer>
             <div>
-                <p><button class="button" data-open="exampleModal1">Click me for a modal</button></p>
-                <div class="reveal" id="exampleModal1" data-reveal>
-                    <h1>Awesome. I Have It.</h1>
-                    <p class="lead">Your couch. It is mine.</p>
-                    <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+                <p><button class="button" data-open="translate-modal">Translate Your Cocktail Order!</button></p>
+                <div class="reveal" id="translate-modal" data-reveal>
+                    <h5><strong>Translation for How to Order Your Cocktail!</strong></h5>
+                    <p class="lead"></p>
+                    
                     <button class="close-button" data-close aria-label="Close modal" type="button">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>            
             </div>
+            
         </footer>
         <!-- End Footer -->
 
