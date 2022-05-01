@@ -5,6 +5,7 @@ var cocktailSelectBtnEl = document.querySelector("#select-btn");
 var cocktailInputEl = document.querySelector("#cocktail-options");
 var translateModalEl = document.querySelector(".lead");
 var cocktailButtonsEl = document.querySelector("#cocktail-buttons");
+var cocktailErrorsEl = document.querySelector("#cocktail-errors");
 
 // Search form
 // Part 1 Cocktail to search by (1) ingredient or (2) name of cocktail **drop down box
@@ -194,20 +195,28 @@ var getCocktailData = function(name) {
           cocktailContainerEl.appendChild(cocktailInstructionsHeadEl);          
           cocktailContainerEl.appendChild(coctailInstructionsEl);
 
-
+          cocktailErrorsEl.textContent = "There were no errors with calling the Cocktail DB API";
+          
 
 
         });
 
       // Create alerts for any errors that might come up regarding the API call
       } else {
-        alert('Error: ' + response.statusText);
-        // Clear out data from any previous searches
+
+        cocktailErrorsEl.textContent = "";
+        cocktailErrorsEl.textContent = "Error: " + response.status + " " + response.statusText;
+
+
+
 
       }
     })
     .catch(function(error) {
-      alert('Unable to connect to Cocktail DB API');
+      cocktailErrorsEl.textContent = "";
+      cocktailErrorsEl.textContent = "Unable to connect to Cocktail DB API";
+    
+
     });
 };
 
