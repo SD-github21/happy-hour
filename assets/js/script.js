@@ -25,13 +25,15 @@ var searchCocktailHandler = function(event) {
     var cocktailname = $("#cocktail-options option:selected").text();
     console.log(cocktailname);
     var cocktailvalue = $("#cocktail-options").val();
-    console.log(cocktailvalue)
+    console.log(cocktailvalue);
+    
       
     // Feed user's entered cocktail name into functions that will make Cocktail DB & Google Translate calls 
     // and generate buttons
       getCocktailData(cocktailvalue);
       if (cocktailname === "Black Russian" || cocktailname === "Negroni" || cocktailname === "Mimosa" ||
-      cocktailname === "Sangria" || cocktailname === "Pina Colada" || cocktailname === "Margarita" || cocktailname === "Paloma") {
+      cocktailname === "Sangria" || cocktailname === "Pina Colada" || cocktailname === "Margarita" || cocktailname === "Paloma"
+      || cocktailname=== "French 75") {
       getTranslateData(cocktailname);
       } else {
         translateModalEl.textContent = "";
@@ -42,22 +44,31 @@ var searchCocktailHandler = function(event) {
       };
       buttonGenerator(cocktailname);
       // Push cocktail name into cocktails array and store in localStorage
-      cocktails.push(cocktailname);
-      console.log(cocktails);
-      localStorage.setItem("cocktails", JSON.stringify(cocktails));
+      if (!cocktails.includes(cocktailname)) {
+        cocktails.push(cocktailname);
+        console.log(cocktails);
+        localStorage.setItem("cocktails", JSON.stringify(cocktails));
+      }
+
   };
 
   // Create and feed cocktail name into buttonGenerator() to dynamically generate and display buttons 
   // for each searched cocktail  
   var buttonGenerator = function(cocktailname) {
     // Clear data from any previous searches
+    if (!cocktails.includes(cocktailname)) {
+      console.log(cocktails);
+      var cocktailButtonEl = document.createElement("button");
+      cocktailButtonEl.setAttribute("data-cocktail", cocktailname);
+      cocktailButtonEl.classList = "button"
+      cocktailButtonEl.innerHTML = cocktailname;
+  
+      cocktailButtonsEl.appendChild(cocktailButtonEl);
 
-    var cocktailButtonEl = document.createElement("button");
-    cocktailButtonEl.setAttribute("data-cocktail", cocktailname);
-    cocktailButtonEl.classList = "button"
-    cocktailButtonEl.innerHTML = cocktailname;
+    }
 
-    cocktailButtonsEl.appendChild(cocktailButtonEl);
+
+
   };
 
 
@@ -227,7 +238,7 @@ var getTranslateData = function(cocktailname) {
   
   var encodedParams = new URLSearchParams();
 
-  if (cocktailname === "Sangria" || cocktailname === "Pina Colada" || cocktailname=== "Margarita" || cocktail === "Paloma") {
+  if (cocktailname === "Sangria" || cocktailname === "Pina Colada" || cocktailname=== "Margarita" || cocktailname === "Paloma") {
     encodedParams.append("q", "I would like to order a(n)");
     encodedParams.append("target", "es");
     encodedParams.append("source", "en");
@@ -251,7 +262,7 @@ var getTranslateData = function(cocktailname) {
       'content-type': 'application/x-www-form-urlencoded',
       'Accept-Encoding': 'application/gzip',
       'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',
-      'X-RapidAPI-Key': 'ac4479e297msh2dfafef294e9270p1a1ecajsna98950f2bde4'
+      'X-RapidAPI-Key': '5c8db769e9msh5db48a3075f2811p17399bjsn3bbad4940064'
     },
     body: encodedParams
   };
