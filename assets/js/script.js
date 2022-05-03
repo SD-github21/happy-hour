@@ -346,3 +346,4 @@ var loadButtons = function() {
 loadButtons();
 cocktailButtonsEl.addEventListener('click', buttonClickHandler);
 cocktailSelectBtnEl.addEventListener("click", searchCocktailHandler);
+
