@@ -1,0 +1,42 @@
+.display {
+    background-color:rgb(213, 177, 130);
+    font-weight: bold;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.body {
+    margin: 0;
+    padding: 0;
+}
+
+.hero {
+    background: url("https://i.insider.com/5c3e2df8c3100e0710201ae3?width=1200&format=jpeg&auto=webp");
+    padding: 80px;
+}  
+.hero h2 {
+    color: rgb(213, 177, 130);
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 48px;
+    position:fixed;
+}
+
+.hero label {
+    color:rgb(213, 177, 130);
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero button {
+    background-color: rgb(213, 177, 130);
+    border-radius: 10px;
+}
+
+.hero div {
+    float:inline-end;
+}
+
+.bottom-page {
+    background-color: rgb(213, 177, 130);
+}
+

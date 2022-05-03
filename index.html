@@ -3,22 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./assets/js/css/style.css" />
+    <link rel="stylesheet" href="css/foundation.css"/> 
+    <link rel="styelsheet" href="css/app.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
+
 
     <title>Happy Hour</title>
     
     <body>
         <!-- Header and Navigation -->
         <header id="header">
-            <h1 class="display">HAPPY HOUR</h1>
-            <nav>
-
+            <nav class="nav-bar">
+                <h1 class="display text-center">HAPPY HOUR</h1>
             </nav>
         </header>
         <!-- End Header and Navigation -->
 
+
+
         <!-- Main Content Section -->
         <main>
+            
+            <section class="hero">
+                <h2>Cocktail Seach</h2>
+
+                    <!-- Search Cocktails Section -->
+                    <div class="grid-x">
+                        <div class="cell medium-6 large-8 large-offset-1"></div>
+                        <form id="cocktail-form">
+                            <label for="cocktail-options">Select a Cocktail from the Menu</label>
+
+                            <select name="cocktail-options" id="cocktail-options" required>
+                                <option>Choose a cocktail</option>
+                                <option value="bloody_mary">Bloody Mary</option>
+                                <option value="cosmopolitan">Cosmopolitan</option>
+                                <option value="french_75">French 75</option>
+                                <option value="mint_julep">Mint Julep</option>
+                                <option value="mimosa">Mimosa</option>
+                                <option value="sangria">Sangria</option>
+                                <option value="pina_colada">Pina Colada</option>
+                                <option value="midnight_cowboy">Midnight Cowboy</option>
+                                <option value="margarita">Margarita</option>
+                                <option value="paloma">Paloma</option>
+                                <option value="negroni">Negroni</option>
+                                <option value="mai_tai">Mai Tai</option>
+                                <option value="black_russian">Black Russian</option>
+                                <option value="old_fashioned">Old Fashioned</option>
+                            </select>
+                            <br>
+                            <br>
+                            <button id="select-btn" class="button small" type="submit">Click Here to Enter Your Selected Cocktail!</button>
+                            <br>
+                            <br>
+                        </form>
+                        <div id="cocktail-buttons">
+                        </div>
+                    </div>
+            </section>
+
 
             <!-- Search Cocktails Section -->
             <div id="cocktail-search">
@@ -54,9 +98,8 @@
 
             </div>
 
-            <!-- Display Cocktail Results Section -->
-            <div id="cocktail-container">
 
+            <!-- Display Cocktail Results Section -->
             </div>
             
             <!-- Check Cocktail DB API errors Modal -->
@@ -101,17 +144,24 @@
 
           
         </main>
+
         <!-- End Main Content Section -->
 
         <!-- Footer -->
         <footer>
             
         </footer>
+
         <!-- End Footer -->
 
         <!-- CDN Link Foundation -->    
         <script src=”https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js”></script>
         <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+        <script src="js/vendor/jquery.min.js"></script>
+        <script src="js/vendor/what-input.min.js"></script>
+        <script src="js/foundation.min.js"></script>
+        <script src="js/app.js" ></script>
+    
         <!-- Link Javascript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>     
