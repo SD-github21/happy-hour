@@ -1,12 +1,13 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 .display {
     background-color:rgb(213, 177, 130);
     font-weight: bold;
     color: white;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-.body {
-    margin: 0;
-    padding: 0;
 }
 
 .hero {
@@ -36,7 +37,10 @@
     float:inline-end;
 }
 
-.bottom-page {
+.grid-container {
     background-color: rgb(213, 177, 130);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
