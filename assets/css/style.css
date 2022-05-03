@@ -44,3 +44,7 @@
     text-align: center;
 }
 
+.button-padding {
+    margin-left: 50px;
+    border-width: thick;
+}
