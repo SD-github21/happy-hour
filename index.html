@@ -73,7 +73,18 @@
 
 
 
-       
+            <!-- Display Google Translate Modal -->
+            <div>
+              <p><button class="button" data-open="translate-modal">Translate Your Cocktail Order!</button></p>
+              <div class="reveal" id="translate-modal" data-reveal>
+                  <h5><strong>Translation for How to Order Your Cocktail!</strong></h5>
+                  <p class="lead" id="translation"></p>
+                  
+                  <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>            
+          </div>
             
             <!-- Check Cocktail DB API errors Modal -->
             <div>
@@ -81,20 +92,6 @@
                 <div class="reveal" id="cocktail-modal" data-reveal>
                     <h5><strong>Cocktail DB API Error Log</strong></h5>
                     <p class="lead" id="cocktail-errors"></p>
-                    
-                    <button class="close-button" data-close aria-label="Close modal" type="button">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>            
-            </div>
-
-
-            <!-- Display Google Translate Modal -->
-            <div>
-                <p><button class="button" data-open="translate-modal">Translate Your Cocktail Order!</button></p>
-                <div class="reveal" id="translate-modal" data-reveal>
-                    <h5><strong>Translation for How to Order Your Cocktail!</strong></h5>
-                    <p class="lead" id="translation"></p>
                     
                     <button class="close-button" data-close aria-label="Close modal" type="button">
                       <span aria-hidden="true">&times;</span>
@@ -121,7 +118,8 @@
                
             <!-- Footer -->
             <footer>
-                <div>
+                <div class="nav-bar display text-center">
+                  <h3>Thank You for Grabing a Drink With Us!</h3>
 
                 </div>
             </footer>
@@ -151,5 +149,6 @@
         <script src="assets/js/script.js"></script>
         <!-- End Link Javascript -->
     </body>
+
 
 </html>
