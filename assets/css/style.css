@@ -62,6 +62,7 @@
 .hero button {
     background-color: rgb(213, 177, 130);
     border-radius: 10px;
+    margin: 0.5em;
 }
 
 .hero div {
@@ -75,3 +76,9 @@
     text-align: center;
 }
 
+/* .button-padding {
+    margin: 0.7em;
+} */
+
+/* Local Styling Note */
+/* margin = .2em */
