@@ -332,7 +332,7 @@ var loadButtons = function() {
 
       var cocktailButtonEl = document.createElement("button");
       cocktailButtonEl.setAttribute("data-cocktail", savedCocktails[i]);
-      cocktailButtonEl.classList = "button"
+      cocktailButtonEl.classList.add("button");
       cocktailButtonEl.innerHTML = savedCocktails[i];
     
       cocktailButtonsEl.appendChild(cocktailButtonEl);
