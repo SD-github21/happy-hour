@@ -40,7 +40,7 @@ Shane Sepeda<br>
  ## **Deliverable**
 
 **Happy Hour:**<br>
-https://github.com/SD-github21/happy-hour
+https://sd-github21.github.io/happy-hour/
 
 **Screen Shot of Happy Hour:**<br>
 ![alt text](assets/images/screencapture-happy-hour.png)
