@@ -58,6 +58,10 @@
     font-weight: bold;
     font-family: copperplate;
 }
+.button {
+    background-color: rgb(7, 116, 43);
+    border-radius: 10px;
+}
 
 .hero button {
     background-color: rgb(213, 177, 130);
@@ -67,6 +71,10 @@
 
 .hero div {
     float:inline-end;
+}
+.footer{
+    font-family: copperplate
+    ;
 }
 
 .grid-container {
