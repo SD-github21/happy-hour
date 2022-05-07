@@ -43,6 +43,6 @@ Shane Sepeda<br>
 https://github.com/SD-github21/happy-hour
 
 **Screen Shot of Happy Hour:**<br>
-![alt text](images/screencapture-happy-hour.png)
+![alt text](assets/images/screencapture-happy-hour.png)
 
 
