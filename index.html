@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/foundation.css"/> 
+    <link rel="styelsheet" href="./assets/css/app.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
+
+
+    <title>Happy Hour</title>
+    
+    <body>
+        <!-- Header and Navigation -->
+        <header id="header">
+            <nav class="nav-bar display text-center">
+                <h1>HAPPY HOUR</h1>
+            </nav>
+        </header>
+        <!-- End Header and Navigation -->
+
+
+
+        <!-- Main Content Section -->
+        <main>
+            
+            <section class="hero">
+                <h2>Cocktail Search</h2>
+
+                    <!-- Search Cocktails Section -->
+                    <div class="grid-x">
+                        <div class="cell medium-6 large-8 large-offset-1"></div>
+                        <form id="cocktail-form">
+                            <label for="cocktail-options">Select a Cocktail from the Menu</label>
+
+                            <select name="cocktail-options" id="cocktail-options" required>
+                                <option>Choose a cocktail</option>
+                                <option value="bloody_mary">Bloody Mary</option>
+                                <option value="cosmopolitan">Cosmopolitan</option>
+                                <option value="french_75">French 75</option>
+                                <option value="mint_julep">Mint Julep</option>
+                                <option value="mimosa">Mimosa</option>
+                                <option value="sangria">Sangria</option>
+                                <option value="pina_colada">Pina Colada</option>
+                                <option value="midnight_cowboy">Midnight Cowboy</option>
+                                <option value="margarita">Margarita</option>
+                                <option value="paloma">Paloma</option>
+                                <option value="negroni">Negroni</option>
+                                <option value="mai_tai">Mai Tai</option>
+                                <option value="black_russian">Black Russian</option>
+                                <option value="old_fashioned">Old Fashioned</option>
+                            </select>
+                            <br>
+                            <br>
+                            <button id="select-btn" class="button small" type="submit">Click Here to Enter Your Selected Cocktail!</button>
+                            <br>
+                            <br>
+                        </form>
+                        <div id="cocktail-buttons" class="">
+                        </div>
+                    </div>
+            </section>
+
+
+
+            <!-- Display Cocktail Results Section -->
+        <article class="grid-container">
+                <div id="cocktail-container">
+
+                </div>
+
+
+
+            <!-- Display Google Translate Modal -->
+            <div>
+              <p><button class="button" data-open="translate-modal">Translate Your Cocktail Order!</button></p>
+              <div class="reveal" id="translate-modal" data-reveal>
+                  <h5><strong>Translation for How to Order Your Cocktail!</strong></h5>
+                  <p class="lead" id="translation"></p>
+                  
+                  <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>            
+          </div>
+            
+            <!-- Check Cocktail DB API errors Modal -->
+            <div>
+                <h6>Having trouble viewing the cocktail information? Click below to learn more about why!</h6>
+                <p><button class="button" data-open="cocktail-modal">Check for Cocktail DB API Errors</button></p>
+                <div class="reveal" id="cocktail-modal" data-reveal>
+                    <h5><strong>Cocktail DB API Error Log</strong></h5>
+                    <p class="lead" id="cocktail-errors"></p>
+                    
+                    <button class="close-button" data-close aria-label="Close modal" type="button">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>            
+            </div>
+
+            <!-- Check Google Translate API errors Modal -->
+            <div>
+                <h6>Having trouble viewing the translation of your order? Click below to learn more about why!</h6>
+                <p><button class="button" data-open="transerror-modal">Check for Google Translate API Errors</button></p>
+                <div class="reveal" id="transerror-modal" data-reveal>
+                    <h5><strong>Google Translate API Error Log</strong></h5>
+                    <p class="lead" id="translate-errors"></p>
+                    
+                    <button class="close-button" data-close aria-label="Close modal" type="button">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>            
+            </div>
+
+          
+        </main>
+
+               
+            <!-- Footer -->
+            <footer class="footer"> </footer>
+                <div class="display text-center">
+                  <h3>Thank You for Grabbing a Drink With Us!</h3>
+
+                </div>
+            </footer>
+
+        </article>
+      
+
+        <!-- End Footer -->
+
+        <!-- CDN Link Foundation -->    
+        <script src=”https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js”></script>
+        <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+        <script src="js/vendor/jquery.min.js"></script>
+        <script src="js/vendor/what-input.min.js"></script>
+        <script src="js/foundation.min.js"></script>
+        <script src="js/app.js" ></script>
+    
+        <!-- Link Javascript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>     
+        <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+        <script src="assets/js/vendor/foundation.min.js"></script>
+        <script src="assets/js/vendor/jquery.js"></script>
+        <script src="assets/js/vendor/foundation.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation-essential/5.5.0/js/foundation/foundation.reveal.js"></script>        
+        <script>$(document).foundation();</script>
+        <script src="assets/js/script.js"></script>
+        <!-- End Link Javascript -->
+    </body>
+
+
+</html>
