@@ -58,7 +58,7 @@
     font-weight: bold;
     font-family: copperplate;
 }
-.button {
+.grid-container button {
     background-color: rgb(7, 116, 43);
     border-radius: 10px;
 }
